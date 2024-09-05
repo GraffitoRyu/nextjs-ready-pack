@@ -1,6 +1,15 @@
 import { createJSONStorage } from "jotai/utils";
 
-const defaultStorage: Storage = new Storage();
+import type {
+  AsyncStringStorage,
+  SyncStringStorage,
+} from "jotai/vanilla/utils/atomWithStorage";
+
+const defaultStorage: AsyncStringStorage | SyncStringStorage = {
+  getItem: () => null,
+  setItem: () => {},
+  removeItem: () => {},
+};
 
 /**
  * jotai; 로컬 스토리지 상태관리 json 생성
